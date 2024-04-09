@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input Table</title>
+<style src="styles.css"></style>
+</head>
+<body>
+
+  <div class="container">
+    <table>
+      <tr>
+        <th colspan="9" class="center">Input Table</th>
+      </tr>
+      <tr>
+        <th colspan="2">
+          <label for="Ammo Type">Ammo Type</label><br>
+          <select id="ammoType">
+            <option value="Prompt1">Pick one</option>
+            <option value="M193">M193</option>
+            <option value="M855">M855</option>
+            <!-- Add more options if needed -->
+          </select>
+        </th>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <label for="x">X:</label><br>
+          <input type="text" id="x">
+        </td>
+        <td colspan="2">
+          <label for="yValueDisplay">Y:</label><br>
+          <div id="yValueDisplay"></div>
+          <div id="output"></div>
+        </td>
+        <td colspan="2">
+          <label for="windSpeed">Wind Speed (MPH):</label><br>
+          <select id="windSpeed">
+            <option value="0">0</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="9">
+          <button id="submitBtn">Submit</button>
+        </td>
+      </tr>
+    </table>
+    <div id="graph-container">
+      <canvas id="graph"></canvas>
+      <img id="graph-image" src="https://www.optics-trade-static.eu/media/catalog/product/cache/9/thumbnail/495x/9df78eab33525d08d6e5fb8d27136e95/b/d/bdc_long_1_1.jpg" alt="Graph Image">
+    </div>
+  </div>
+  <script src="script.js"></script>
+  </body>
+</html>
