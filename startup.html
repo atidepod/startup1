@@ -1,64 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Input Table</title>
-<style src="styles.css"></style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Table</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #006400;
+            height: 50px; /* Set the height of the header */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            margin: 100px auto; /* Center the container */
+            padding: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Clear floats */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #fff;
+            text-align: right;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #006400;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d00;
+        }
+
+.instructions {
+    margin-bottom: 0; /* Remove bottom margin */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+#input-container {
+    width: calc(60% - 20px); /* 60% of the container width minus margin */
+    float: right;
+    margin-top: 10px; /* Adjusted margin to align with the instructions */
+    position: relative;
+    top: -50px; /* Adjust the value to align the input box with the instructions */
+}
+
+#graph-container {
+    width: 40%;
+    float: left;
+    margin-right: 20px;
+    margin-top: 0; /* Remove the top margin */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the start (top) of the container */
+    height: 100%; /* Make the container full height */
+    align-items: center; /* Center the items horizontally */
+}
+
+#graph-container canvas,
+#graph-container img {
+    width: 80%; /* Adjust the width as needed */
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+  </style>
+
 </head>
 <body>
 
-  <div class="container">
-    <table>
-      <tr>
-        <th colspan="9" class="center">Input Table</th>
-      </tr>
-      <tr>
-        <th colspan="2">
-          <label for="Ammo Type">Ammo Type</label><br>
-          <select id="ammoType">
-            <option value="Prompt1">Pick one</option>
-            <option value="M193">M193</option>
-            <option value="M855">M855</option>
-            <!-- Add more options if needed -->
-          </select>
-        </th>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <label for="x">Range:</label><br>
-          <input type="text" id="x" required placeholder="How far away is that deer">
-        </td>
-        <td colspan="2">
-          <label for="yValueDisplay">Y:</label><br>
-          <div id="yValueDisplay"></div>
-          <div id="output"></div>
-        </td>
-        <td colspan="2">
-          <label for="windSpeed">Wind Speed (MPH):</label><br>
-          <select id="windSpeed">
-            <option value="0">0</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="9">
-          <button id="submitBtn">Submit</button>
-        </td>
-      </tr>
-    </table>
-    <div id="graph-container">
-      <canvas id="graph"></canvas>
-      <img id="graph-image" src="https://www.optics-trade-static.eu/media/catalog/product/cache/9/thumbnail/495x/9df78eab33525d08d6e5fb8d27136e95/b/d/bdc_long_1_1.jpg" alt="Graph Image">
-    </div>
+<div class="header"></div>
+
+<div class="container">
+<div class="instructions">because of the sdflkjsdf kjl dfskjl dfsjkl sdfalkj;sdfa kj;l dfs kj;l dafskj;l dfsakj;l fdskj;l fads kj;l dfskj;l dfslkj; dafs kj;l fd sdflkj dfskj dfskjl dfs lkj dfaslkjdfskj dfslkj;dafskj;fdskj;dfskjfdskjl;fdslkj;dfsa</div>
+  <div id="graph-container">
+      <canvas id="graph" class="img-fluid" style="max-width: 100%; height: auto;"></canvas>
+      <img id="graph-image" src="https://www.optics-trade-static.eu/media/catalog/product/cache/9/thumbnail/495x/9df78eab33525d08d6e5fb8d27136e95/b/d/bdc_long_1_1.jpg" alt="Graph Image" class="img-fluid">
   </div>
-  <div><a href="index.html".>login</a></div>
-  <div><a href="saved_data.html">saved data</a></div>
-  <div><a href="https://github.com/atidepod/startup1/tree/main"></a></div>
-  <script src="script.js"></script>
-  </body>
-</html>
+  <div id="input-container">
+      <h1 class="mt-5 mb-4">  h</h1>
+      <form>
+          <div class="form-group">
+              <label for="ammoType">Ammo Type:</label>
+              <select id="ammoType" class="form-control">
+                  <option value="Prompt1">Pick one</option>
+                  <option value="M193">M193</option>
+                  <option value="M855">M855</option>
+                  <!-- Add more options if needed -->
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="x">X:</label>
+              <input type="text" id="x" class="form-control">
+          </div>
+          <div class="form-group">
+              <label for="windSpeed">Wind Speed (MPH):</label>
+              <select id="windSpeed" class="form-control">
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
