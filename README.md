@@ -22,3 +22,8 @@ Description of how I will use each technology:
   4. The startup will use WebSocket data in the form of predicted weather/windage calculations that are accurate to the half hour. 
 
 Rough sketch:
+
+
+
+
+you may be wondering why everything is coming so late. i made a note explaining why in the "fortheta" page. I have learned a lot about html and such in this assignment. i hope that next time i don;t have to do this in so little time"
