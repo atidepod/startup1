@@ -26,4 +26,4 @@ Rough sketch:
 
 
 
-you may be wondering why everything is coming so late. i made a note explaining why in the "fortheta" page. I have learned a lot about html and such in this assignment. i hope that next time i don;t have to do this in so little time"
+you may be wondering why everything is coming so late. i made a note explaining why in the "fortheta" page. I have learned a lot about html and such in this assignment. i hope that next time i don;t have to do this in so little time" in terms of html and css, this was built from the ground up in the last few weeks. 
