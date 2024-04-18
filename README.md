@@ -29,4 +29,6 @@ Rough sketch:
 you may be wondering why everything is coming so late. i made a note explaining why in the "fortheta" page. I have learned a lot about html and such in this assignment. i hope that next time i don;t have to do this in so little time" in terms of html and css adn javascript, this was built from the ground up in the last few weeks. 
 in html i added head body and div containers, along with input and output boxes and images
 in css i added styles to position everything on the screen and allow the webpage to change with the size of the window. 
-in javascript i added the fetch requests to several csv files that determine the output given back to the user. I also added the basis for a login mechanism and a websocket request. included was an active database listing all of the users inputs and the connected outputs. 
+in javascript i added the fetch requests to several csv files that determine the output given back to the user. I also added the basis for a login mechanism and a websocket request. included was an active database listing all of the users inputs and the connected outputs.
+i also got to add a bunch of confusing code that made my website available at "http://localhost:3000/index.html" with a quote that showed up in the header of the login page. 
+it looks like i am having some troubles with the mongodb database, hwoever i am getting the user authentication to work ok
