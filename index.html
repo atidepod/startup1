@@ -97,8 +97,7 @@
     }
 
     .image-placeholder {
-      width: 50%;
-      float: left;
+      width: 100%;
       height: 400px;
       background-color: #444;
       background-image: url("https://huskemawoptics.com/cdn/shop/files/elk-reticle-Tactical-Riflescope-mobile-lighter_fe5d4852-8c14-4d71-9ca3-980c176f69a6.jpg?v=1694024322&width=1200");
@@ -107,9 +106,20 @@
     }
 
     .login-box {
-      width: 50%;
-      float: right;
+      width: 100%;
       padding: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .image-placeholder {
+        width: 50%;
+        float: left;
+      }
+
+      .login-box {
+        width: 50%;
+        float: right;
+      }
     }
   </style>
 </head>
@@ -119,10 +129,9 @@
     <div class="dropdown" id="dropdownMenu">
       <span>Menu</span>
       <div class="dropdown-content" id="dropdownContent">
-        <a href="#">Option 1</a>
-        <a href="#">Option 2</a>
-        <a href="#">Option 3</a>
-
+        <a href="https://github.com/atidepod/startup1/tree/main">Github</a>
+        <a href="startup.html">Startup</a>
+        <a href="saved_data.html">Saved data</a>
       </div>
     </div>
   </div>
@@ -131,7 +140,7 @@
     <div class="image-placeholder"></div>
     <div class="login-box">
       <h2 class="text-center">Login</h2>
-      <form>
+      <form id="loginForm">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" id="username" class="form-control">
@@ -140,33 +149,75 @@
           <label for="password">Password:</label>
           <input type="password" id="password" class="form-control">
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Login</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
     </div>
   </div>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-      const dropdownMenu = document.getElementById('dropdownMenu');
-      const dropdownContent = document.getElementById('dropdownContent');
-      dropdownMenu.addEventListener('mouseover', () => {
-        const rect = dropdownMenu.getBoundingClientRect();
-        if (rect.left < 0) {
-          dropdownContent.style.left = '0';
-          dropdownContent.style.right = 'auto';
-        } else {
-          dropdownContent.style.left = 'auto';
-          dropdownContent.style.right = '0';
-        }
-      });
-    });
-  </script>
+        <div class="register-box">
+            <h2 class="text-center">Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('loginForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                // Get form data
+                var formData = new FormData(document.getElementById('loginForm'));
+                // Send form data using AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/api/login', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        // Login successful, show a message to the user
+                        alert('Login successful!');
+                        // Redirect to the dashboard or perform any other action
+                        window.location.href = '/dashboard.html';
+                    } else if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 200) {
+                        // Login failed, show an error message to the user
+                        alert('Login failed. Please try again.');
+                    }
+                };
+                xhr.send(formData);
+            });
+
+            document.getElementById('registerForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                // Get form data
+                var formData = new FormData(document.getElementById('registerForm'));
+                // Send form data using AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/api/register', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        // Registration successful, show a message to the user
+                        alert('Registration successful! Please log in.');
+                        // Redirect to the login page or perform any other action
+                        window.location.href = '/login.html';
+                    } else if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 200) {
+                        // Registration failed, show an error message to the user
+                        alert('Registration failed. Please try again.');
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
 </body>
 
 </html>
