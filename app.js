@@ -1,13 +1,18 @@
 const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const fetch = require('node-fetch');
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/cs260', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/shotPlot/cs260', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Define User schema
 const userSchema = new mongoose.Schema({
@@ -46,12 +51,13 @@ app.post('/api/register', async (req, res) => {
     try {
         const { username, password, email } = req.body;
         // Ensure that password is a string
-        if (typeof req.body.password !== 'string') {
+        const passwordString = req.body.password;
+        if (typeof passwordString !== 'string') {
             return res.status(400).json({ error: 'Password must be a string' });
         }
 
         // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(passwordString, 10);
 
         const newUser = new User({ username, password: hashedPassword, email });
         await newUser.save();
@@ -61,8 +67,6 @@ app.post('/api/register', async (req, res) => {
         res.status(500).json({ error: 'Failed to register user' });
     }
 });
-
-
 
 // API endpoint to authenticate a user
 app.post('/api/login', async (req, res) => {
@@ -83,7 +87,25 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+// WebSocket connection
+io.on('connection', (socket) => {
+    console.log('A user connected');
+
+    // Handle incoming messages
+    socket.on('message', (data) => {
+        console.log('Received message:', data);
+
+        // Broadcast the message to all clients
+        io.emit('message', data);
+    });
+
+    // Handle disconnection
+    socket.on('disconnect', () => {
+        console.log('A user disconnected');
+    });
+});
+
 // Start the server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
